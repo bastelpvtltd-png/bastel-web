@@ -5,9 +5,9 @@
 
 // ─── EMAILJS CONFIG ──────────────────────────────────────────
 // IMPORTANT: Replace these with your actual EmailJS values
-const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';       // e.g. 'service_abc123'
-const EMAILJS_TEMPLATE_TO_OWNER  = 'YOUR_TEMPLATE_OWNER_ID';  // template that sends to bathiyapradeep@yahoo.com
-const EMAILJS_TEMPLATE_AUTOREPLY = 'YOUR_TEMPLATE_AUTOREPLY_ID'; // auto-reply template to sender
+const EMAILJS_SERVICE_ID  = 'service_bfj2ua8';       // e.g. 'service_abc123'
+const EMAILJS_TEMPLATE_TO_OWNER  = 'template_d6set95';  // template that sends to bathiyapradeep@yahoo.com
+const EMAILJS_TEMPLATE_AUTOREPLY = 'template_k3uoxrw'; // auto-reply template to sender
 
 // ─── LOADER ──────────────────────────────────────────────────
 const loader = document.getElementById('loader');
