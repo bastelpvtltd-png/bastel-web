@@ -181,7 +181,7 @@ if (form) {
         return emailjs.send(SERVICE_ID, TEMPLATE_AUTOREPLY, {
           to_email: fromEmail,
           to_name: fromName,
-          service: service,
+          to_service: service,
           message: "Thank you for contacting us. We have received your inquiry."
         });
       })
