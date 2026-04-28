@@ -176,6 +176,7 @@ if (form) {
       message:    message,
       // EmailJS template variables:
       to_email:   'bathiyapradeep@yahoo.com',  // owner mail
+      to_name:    'Bastel Team',               // recipient name
       reply_to:   fromEmail
     };
 
@@ -185,7 +186,8 @@ if (form) {
         // Send auto-reply to customer
         return emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_AUTOREPLY, {
           ...templateParams,
-          to_email: fromEmail  // auto-reply goes to customer
+          to_email: fromEmail,  // auto-reply goes to customer
+          to_name: fromName     // customer's name
         });
       })
       .then(() => {
