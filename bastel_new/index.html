@@ -65,7 +65,7 @@
 <section class="hero" id="home">
   <div class="hero-video-wrap">
     <video class="hero-video" autoplay muted loop playsinline>
-      <source src="https://cdn.pixabay.com/video/2024/02/28/202043_large.mp4" type="video/mp4" />
+      <source src="https://pixabay.com/videos/download/video-336377_medium.mp4" type="video/mp4" />
     </video>
     <div class="hero-overlay"></div>
     <div class="hero-grain"></div>
@@ -196,7 +196,7 @@
   <div class="about-visual">
     <div class="about-video-wrap">
       <video autoplay muted loop playsinline class="about-video">
-        <source src="https://cdn.pixabay.com/video/2019/09/25/27073-363165285_large.mp4" type="video/mp4" />
+        <source src="video1.mp4" type="video/mp4" />
       </video>
       <div class="about-video-overlay"></div>
     </div>
@@ -240,7 +240,7 @@
 <section class="why">
   <div class="why-bg-video">
     <video autoplay muted loop playsinline>
-      <source src="https://cdn.pixabay.com/video/2024/01/15/197264_large.mp4" type="video/mp4" />
+      <source src="https://pixabay.com/videos/download/x-96643_medium.mp4" type="video/mp4" />
     </video>
     <div class="why-overlay"></div>
   </div>
@@ -270,24 +270,37 @@
       </div>
     </div>
     <form class="contact-form reveal-up" id="contactForm">
-      <h3>Send Us a Message</h3>
-      <div class="form-row">
-        <div class="form-group"><label>Full Name</label><input type="text" name="from_name" placeholder="Your name" required /></div>
-        <div class="form-group"><label>Email Address</label><input type="email" name="from_email" placeholder="your@email.com" required /></div>
-      </div>
-      <div class="form-group"><label>Service Required</label>
-        <select name="service">
-          <option value="">Select a service...</option>
-          <option>Freight Handling</option><option>Cargo Clearing</option>
-          <option>Transport Management</option><option>Fumigation Services</option>
-          <option>Final Documentation</option><option>Import / Export Trade</option>
-          <option>Full Supply Chain Solution</option>
-        </select>
-      </div>
-      <div class="form-group"><label>Message</label><textarea name="message" placeholder="Tell us about your shipment requirements..." rows="4"></textarea></div>
-      <button type="submit" class="btn-primary full-width">Send Message →</button>
-      <p class="form-note">We'll respond within 24 hours · No obligation</p>
-    </form>
+  <h3>Send Us a Message</h3>
+  <div class="form-row">
+    <div class="form-group">
+      <label>Full Name</label>
+      <input type="text" name="from_name" id="from_name" placeholder="Your name" required />
+    </div>
+    <div class="form-group">
+      <label>Email Address</label>
+      <input type="email" name="from_email" id="from_email" placeholder="your@email.com" required />
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Service Required</label>
+    <select name="service" id="service_type">
+      <option value="">Select a service...</option>
+      <option>Freight Handling</option>
+      <option>Cargo Clearing</option>
+      <option>Transport Management</option>
+      <option>Fumigation Services</option>
+      <option>Final Documentation</option>
+      <option>Import / Export Trade</option>
+      <option>Full Supply Chain Solution</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Message</label>
+    <textarea name="message" id="message_content" placeholder="Tell us about your shipment requirements..." rows="4"></textarea>
+  </div>
+  <button type="submit" class="btn-primary full-width">Send Message →</button>
+  <p class="form-note">We'll respond within 24 hours · No obligation</p>
+</form>
   </div>
 </section>
 

@@ -3,12 +3,6 @@
    EmailJS: sends mail to bathiyapradeep@yahoo.com + auto-reply
    ============================================================ */
 
-// ─── EMAILJS CONFIG ──────────────────────────────────────────
-// IMPORTANT: Replace these with your actual EmailJS values
-const EMAILJS_SERVICE_ID  = 'service_bfj2ua8';       // e.g. 'service_abc123'
-const EMAILJS_TEMPLATE_TO_OWNER  = 'template_d6set95';  // template that sends to bathiyapradeep@yahoo.com
-const EMAILJS_TEMPLATE_AUTOREPLY = 'template_k3uoxrw'; // auto-reply template to sender
-
 // ─── LOADER ──────────────────────────────────────────────────
 const loader = document.getElementById('loader');
 const progress = document.getElementById('loaderProgress');
@@ -150,50 +144,52 @@ if (heroStats) counterObserver.observe(heroStats);
 // Mail 1: Owner (bathiyapradeep@yahoo.com) වෙත notification
 // Mail 2: Sender (customer) වෙත auto-reply
 const form = document.getElementById('contactForm');
+
 if (form) {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
+    
     const btn = form.querySelector('.btn-primary');
     const origText = btn.textContent;
-
-    const fromName  = form.querySelector('[name="from_name"]').value.trim();
-    const fromEmail = form.querySelector('[name="from_email"]').value.trim();
-    const service   = form.querySelector('[name="service"]').value;
-    const message   = form.querySelector('[name="message"]').value.trim();
-
-    if (!fromName || !fromEmail || !message) {
-      alert('Please fill in all required fields.');
-      return;
-    }
-
+    
+    // UI එක update කිරීම
     btn.textContent = 'Sending...';
     btn.disabled = true;
 
+    // Form එකෙන් values ලබා ගැනීම
+    const fromName = document.getElementById('from_name').value;
+    const fromEmail = document.getElementById('from_email').value;
+    const serviceType = document.getElementById('service_type').value;
+    const messageContent = document.getElementById('message_content').value;
+
+    // EmailJS එකට යවන parameters
     const templateParams = {
-      from_name:  fromName,
+      from_name: fromName,
       from_email: fromEmail,
-      service:    service || 'Not specified',
-      message:    message,
-      // EmailJS template variables:
-      to_email:   'bathiyapradeep@yahoo.com',  // owner mail
-      to_name:    'Bastel Team',               // recipient name
-      reply_to:   fromEmail
+      service: serviceType,
+      message: messageContent
     };
 
-    // Send notification email to owner
-    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_TO_OWNER, templateParams)
+    const SERVICE_ID = 'service_bfj2ua8'; // මෙතනට ඔයාගේ Service ID එක දාන්න
+    const TEMPLATE_TO_OWNER = 'template_k3uoxrw'; // මෙතනට Owner Template ID එක දාන්න
+    const TEMPLATE_AUTOREPLY = 'template_d6set95'; // මෙතනට Autoreply Template ID එක දාන්න
+
+    // 1. Owner හට email එක යැවීම
+    emailjs.send(SERVICE_ID, TEMPLATE_TO_OWNER, templateParams)
       .then(() => {
-        // Send auto-reply to customer
-        return emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_AUTOREPLY, {
-          ...templateParams,
-          to_email: fromEmail,  // auto-reply goes to customer
-          to_name: fromName     // customer's name
+        // 2. පාරිභෝගිකයාට auto-reply එක යැවීම
+        return emailjs.send(SERVICE_ID, TEMPLATE_AUTOREPLY, {
+          to_email: fromEmail,
+          to_name: fromName,
+          message: "Thank you for contacting us. We have received your inquiry."
         });
       })
       .then(() => {
+        // සාර්ථක වූ විට
         btn.textContent = 'Message Sent ✓';
         btn.style.background = '#1a7a4a';
         form.reset();
+        
         setTimeout(() => {
           btn.textContent = origText;
           btn.style.background = '';
@@ -201,14 +197,15 @@ if (form) {
         }, 3500);
       })
       .catch((error) => {
+        // වැරදීමක් වූ විට
         console.error('EmailJS error:', error);
         btn.textContent = 'Error! Try Again';
         btn.disabled = false;
         btn.style.background = '#d9534f';
+        
         setTimeout(() => {
           btn.textContent = origText;
           btn.style.background = '';
-          btn.disabled = false;
         }, 3000);
       });
   });
