@@ -233,7 +233,7 @@ img, video { max-width: 100%; height: auto; } /* Ensure images/videos are respon
 .hero-sub {
   font-family: var(--font-serif);
   font-size: clamp(1rem, 2vw, 1.25rem);
-  color: var(--text-muted);
+  color: #fff;
   line-height: 1.8;
   margin-bottom: 2.5rem;
 }
@@ -832,4 +832,52 @@ body.show-chatbot .chatbot-window {
   }
   .chatbot-window .chatbox { height: calc(100% - 130px); }
   .chatbot-header .close-btn { display: block; }
+}
+/* Core Values Accordion */
+.values-accordion {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.value-item {
+  border-bottom: 1px solid rgba(34, 212, 240, 0.2);
+  margin-bottom: 6px;
+}
+
+.value-header {
+  padding: 12px 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 200;
+  color: #fff;
+  transition: 0.1s;
+}
+
+.value-header:hover {
+  color: #fff;
+}
+
+.value-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+}
+
+.value-content p {
+  padding-bottom: 15px;
+  margin: 0;
+}
+
+/* Active State */
+.value-item.active .value-content {
+  max-height: 100px; /* විස්තරයේ දිග අනුව මෙය වෙනස් විය හැක */
+}
+
+.value-item.active .value-header span {
+  transform: rotate(45deg);
+  color: #ff4d4d; /* Close button එකක් වගේ පෙනෙන්න */
 }

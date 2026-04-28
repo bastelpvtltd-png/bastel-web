@@ -159,14 +159,14 @@ if (form) {
     // Form එකෙන් values ලබා ගැනීම
     const fromName = document.getElementById('from_name').value;
     const fromEmail = document.getElementById('from_email').value;
-    const serviceType = document.getElementById('service_type').value;
+    const service = document.getElementById('service').value;
     const messageContent = document.getElementById('message_content').value;
 
     // EmailJS එකට යවන parameters
     const templateParams = {
       from_name: fromName,
       from_email: fromEmail,
-      service: serviceType,
+      service: service,
       message: messageContent
     };
 
@@ -181,6 +181,7 @@ if (form) {
         return emailjs.send(SERVICE_ID, TEMPLATE_AUTOREPLY, {
           to_email: fromEmail,
           to_name: fromName,
+          service: service,
           message: "Thank you for contacting us. We have received your inquiry."
         });
       })
@@ -305,4 +306,20 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   console.log('Bastel Pvt Ltd — Global Trade Catalyst 🌐');
+});
+// Core Values Accordion Logic
+document.querySelectorAll('.value-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const item = header.parentElement;
+    
+    // දැනට විවෘතව ඇති වෙනත් ඒවා ඇත්නම් ඒවා වසන්න
+    document.querySelectorAll('.value-item').forEach(otherItem => {
+      if (otherItem !== item) {
+        otherItem.classList.remove('active');
+      }
+    });
+
+    // ක්ලික් කළ එක toggle කරන්න (Open/Close)
+    item.classList.toggle('active');
+  });
 });
